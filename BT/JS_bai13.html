@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    .main {
+        width: 30%;
+        margin: auto;
+        margin-top: 100px;
+    }
+    
+    .form-group {
+        width: 50%;
+        line-height: 1.5;
+    }
+    
+    .left {
+        float: left;
+    }
+    
+    .right {
+        float: right;
+    }
+    
+    .form-control {
+        width: 170px;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="form-group left">
+            <label for="" style="font-style: italic;">Họ và tên</label></br>
+            <span>
+                <select name="favourite" class="form-control" size="10" id="myList">
+                    <option value="A">Nguyễn Thị Ngọc</option>
+                    <option value="B">Nguyễn Văn Hòa</option>
+                    <option value="C">Nguyễn Trần Khánh</option>
+                    <option value="D">Nguyễn Thị Hoa</option>
+                    <option value="E">Nguyễn Ngọc Tú</option>
+                    <option value="F">Phạm Hoa Hoa</option>
+                    <option value="G">Nguyễn Khánh Toàn</option>
+                </select>
+            </span>
+
+            <button type="button" onclick="add();" class="btn btn-success">Lọc tên</button>
+        </div>
+
+        <div class="form-group right">
+            <label for="" style="font-style: italic;">Tên</label>
+            <br>
+            <span>
+                <select name="words" class="form-control" id="list" size="10">
+                    
+                </select>
+            </span>
+            <button type="button" onclick="del();" class="btn btn-primary">Xóa tên</button>
+        </div>
+
+
+    </div>
+    <script>
+        var sel = document.getElementById('myList');
+        var x = document.getElementById("list");
+
+        function checking(opt) {
+            for (let j = 0; j < document.getElementById("list").options.length; j++) {
+                if (opt.value == document.getElementById("list").options[j].value) {
+                    console.log(opt.value);
+                    console.log(document.getElementById("list").options[j].value);
+                    document.getElementById("list").options[j].text = " ";
+                    console.log(document.getElementById("list").options[j].value);
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
+        function add() {
+            var opt;
+            for (var i = 0, len = sel.options.length; i < len; i++) {
+                opt = sel.options[i];
+                if (opt.selected === true) {
+                    if (checking(opt) == 0) {
+                        var option = document.createElement("option");
+                        option.text = opt.value;
+                        x.add(option);
+                    }
+                }
+            }
+        }
+
+        function check_name(opt) {
+            for (let j = 0; j < document.getElementById("myList").options.length; j++) {
+                if (opt.value == document.getElementById("myList").options[j].value) {
+                    console.log(opt.value);
+                    console.log(document.getElementById("list").options[j].value);
+                    document.getElementById("list").options[j].text = " ";
+                    console.log(document.getElementById("list").options[j].value);
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
+        function del() {
+            x.remove(x.selectedIndex);
+        }
+    </script>
+</body>
+
+</html>

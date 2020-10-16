@@ -20,22 +20,25 @@
     }
 </style>
 <script language=javascript>
+    var dem = 0;
+
     function kiemtra1() {
+        dem = dem + 1;
         var user = "Administrator";
         var pass = "Admin";
         var formUser = f1.txtuser.value;
         var formPass = f1.txtpass.value;
-        var dem = 0;
+
         if (formUser === user && formPass === pass) {
             alert("Success!! Welcome");
         } else {
-            dem = dem + 1;
             alert("Login fail." + dem);
+            if (dem == 3) {
+                f1.txtuser.disabled = true;
+                f1.txtpass.disabled = true;
+            }
         }
-        if (dem == 3) {
-            f1.txtuser.disabled = true;
-            f1.txtpass.disabled = true;
-        }
+
         return (false);
     }
 </script>

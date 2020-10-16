@@ -8,12 +8,12 @@
 </head>
 
 <style>
-    form {
+    .main {
         width: 30%;
         margin: auto;
         margin-top: 50px;
         border: 1px solid;
-        height: 270px;
+        height: 100px;
         padding: 25px;
     }
     
@@ -33,21 +33,24 @@
 </style>
 <script>
     function kiemtra() {
-        var temp = document.f.words;
-        for (var i = 1; i < temp.length; i++) {
-            if (temp.options[i].selected == true) {
-                document.f.txtMean.value = temp.options[i].value;
+        let wordE = document.getElementById("mySelect").value;
+        let words = document.getElementById("list");
+        var txt = "All options: ";
+        var i;
+        for (i = 0; i < words.length; i++) {
+            if (words.options[i].text == wordE) {
+                document.getElementById("list").options[0].text = wordE;
             }
         }
-        return flase;
+        return false;
     }
 </script>
 
 <body>
-    <form action="" method="" name="f" onsubmit="return kiemtra();">
+    <div class="main">
         <div class="left">
             <p>Chọn một từ tiếng anh</p>
-            <select name="words" id="">
+            <select name="words" id="mySelect" onchange="return kiemtra()">
                 <option value="">Chọn một từ</option>
     
                 <option value="Xin chào">Hello</option>
@@ -66,11 +69,23 @@
         </div>
         <div class="right">
             <p>Giải nghĩa</p>
-            <textarea name="txtMean" id="txtMean" value="" cols="30" rows="10">
-            </textarea>
+            <select name="mean" id="list">
+                <option value="" id="result" ></option>
+    
+                <option value="Hello">Xin chào</option>
+                <option value="Today">Hôm nay</option>
+                <option value="Sky">Bầu trời</option>
+                <option value="Cat">Mèo</option>
+                <option value="Dog">Chó</option>
+    
+                <option value="Dog">Chó</option>
+                <option value="Monkey">Khỉ</option>
+                <option value="Bear">Gấu</option>
+                <option value="Chicken">Ga</option>
+                <option value="Bee">ong</option>
+            </select>
         </div>
-        <input type="submit" value="Kiểm tra">
-    </form>
+    </div>
 </body>
 
 </html>

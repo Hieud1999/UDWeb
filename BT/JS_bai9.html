@@ -8,7 +8,7 @@
 </head>
 
 <style>
-    form {
+    .main {
         width: 30%;
         margin: auto;
         margin-top: 50px;
@@ -33,21 +33,16 @@
 </style>
 <script>
     function kiemtra() {
-        var temp = document.f.words;
-        for (var i = 1; i < temp.length; i++) {
-            if (temp.options[i].selected == true) {
-                document.f.txtMean.value = temp.options[i].value;
-            }
-        }
-        return flase;
+        let word = document.getElementById("mySelect").value;
+        document.getElementById("txtMean").innerHTML = word;
     }
 </script>
 
 <body>
-    <form action="" method="" name="f" onsubmit="return kiemtra();">
+    <div class="main">
         <div class="left">
             <p>Chọn một từ tiếng anh</p>
-            <select name="words" id="">
+            <select name="words" id="mySelect">
                 <option value="">Chọn một từ</option>
     
                 <option value="Xin chào">Hello</option>
@@ -69,8 +64,8 @@
             <textarea name="txtMean" id="txtMean" value="" cols="30" rows="10">
             </textarea>
         </div>
-        <input type="submit" value="Kiểm tra">
-    </form>
+        <input type="submit" value="Kiểm tra" onclick="kiemtra()">
+    </div>
 </body>
 
 </html>
